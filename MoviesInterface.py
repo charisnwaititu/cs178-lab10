@@ -5,9 +5,14 @@
 
 import boto3
 
-# boto3 uses the credentials configured via `aws configure` on EC2
+# boto3 uses the credentials configured via `aws configure` on EC2gu
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('Movies')
+def get_table():
+    """Return a reference to the DynamoDB Movies table."""
+    dynamodb = boto3.resource("dynamodb", region_name=REGION)
+    return dynamodb.Table(TABLE_NAME)
+
 
 def create_movie():
     """
