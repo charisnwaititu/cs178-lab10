@@ -44,13 +44,20 @@ def print_all_movies():
 
 
 def update_rating():
-    title = input("What is the movie title? ")
-    rating = int(input("What is the rating (integer): "))
-    table.update_item(
-        Key={"Title": title},
-        UpdateExpression="SET Ratings = list_append(Ratings, :r)",
-        ExpressionAttributeValues={':r': [rating]}
-    )
+    try:
+        title = input("What is the movie title? ")
+        rating = int(input("What is the rating (integer): "))
+        table.update_item(
+            Key={"Title": title},
+            UpdateExpression="SET Ratings = list_append(Ratings, :r)",
+            ExpressionAttributeValues={':r': [rating]}
+        )
+    except ValueError:
+        print("Value must be an integer")
+    except KeyError:
+        print("Not in the table")
+
+
 
 def delete_movie():
     """
