@@ -52,10 +52,8 @@ def update_rating():
             UpdateExpression="SET Ratings = list_append(Ratings, :r)",
             ExpressionAttributeValues={':r': [rating]}
         )
-    except ValueError:
-        print("Value must be an integer")
-    except KeyError:
-        print("Not in the table")
+    except Exception:
+        print("error in updating movie rating")
 
 
 
