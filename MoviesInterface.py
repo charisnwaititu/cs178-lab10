@@ -64,11 +64,10 @@ def delete_movie():
     """
     try:
         title = input("What is the movie title? ")
-        table.delete_item(
-            Key={"Title": title}
-        )
-    except Exception:
-        print('Title not in table')
+        if title not in table:
+            print("Title not in table")
+            return
+        table.delete_item(Key={"Title": title})
 
 def query_movie():
     """
