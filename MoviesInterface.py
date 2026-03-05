@@ -63,9 +63,6 @@ def delete_movie():
     Delete that item from the database.
     """
     title = input("What is the movie title? ")
-    if title not in table: 
-        print("Title not in table")
-        return
     table.delete_item(Key={"Title": title})
 
 def query_movie():
