@@ -70,7 +70,23 @@ def query_movie():
     Prompt user for a Movie Title.
     Print out the average of all ratings in the movie's Ratings list.
     """
-    print("query movie")
+    title = input("What is the movie title? ")
+
+    response = table.get_item(Key={"Title": title})
+    movie = response.get("Item")
+
+    if not movie:
+        print("movie not found")
+        return
+
+    ratings_list = movie.get("Ratings", [])
+
+    if not ratings_list:
+        print("movie has no ratings")
+        return
+
+    average_rating = sum(ratings_list) / len(ratings_list)
+    print(f"Average rating: {average_rating:.2f}")
 
 def print_menu():
     print("----------------------------")
