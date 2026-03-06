@@ -15,7 +15,20 @@ def create_movie():
     Prompt user for a Movie Title.
     Add the movie to the database with the title and an empty Ratings list.
     """
-    print("creating a movie")
+    title = input("What is the movie title? ")
+    year = input("What is the year? ")
+    runtime = input("What is the runtime? ")
+
+    table.put_item(
+        Item={
+            "Title": title,
+            "Year": year,
+            "Runtime": runtime,
+            "Ratings": []
+        }
+    )
+
+    print("Movie created.")
 
 def print_movie(movie):
     title = movie.get("Title", "Unknown Title")
