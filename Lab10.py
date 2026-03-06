@@ -91,7 +91,7 @@ def print_menu():
     print("Press R: to READ all Ice Cream")
     print("Press U: to UPDATE Ice Cream (change the calories)")
     print("Press D: to DELETE an Ice Cream Flavour")
-    print("Press Q: to QUERY ")
+    print("Press Q: to QUERY a specific flavour")
     print("Press X: to EXIT application")
     print("----------------------------")
 
